@@ -127,13 +127,27 @@ Daha gelişmiş arama yapmak için ctrl+r tuşlarına basılır ve aranacak harf
 
 ### Jokerler (Wildcards) {#jokerler}
 
+Jokerler genelde çok sayıda aynı isimle başlayan veya içinde aynı sözcük geçen dosya veya klasör bulunan durumlarda işimize yaramaktadır. Linux terminalinde çok sayıda joker bulunmaktadır fakat bizim için gerekli olanlar aşağıda verilmiştir: 
+
 Yıldız (\*)
  : Geçerli klasördeki tüm dosyaları veya başına belli bir kelime yazılarak o kelime ile başlayan tüm dosyaları ifade eder. Örneğin klasörde sayı1, sayı2, sayı36, sayılar diye dört dosya varsa bunlar teker teker yazmak yerine sayı\* şeklinde de ifade edilebilir. \*sayı\* ifadesi ise içinde "sayı" kelimesi içeren dosya veya klasör isimleriyle eşlecektir.
 
+Örnek: ls komutunu kullanarak sayi ile başlayan tüm dosyaları listeleme
+![Yıldız jokerinin kullanımı](image/yıldızjoker.PNG)
+       ls komutunu kullanarak içinde say geçen tüm dosyaları listeleme
+![Yıldız jokerinin kullanımı](image/yıldızjoker2.PNG)
+
 Soru İşareti (?)
  : Geçerli klasördeki sadece sondaki tek bir karakteri farklı olan dosyaların tümünü ifade eder. Örneğin yine sayı1, sayı2, sayı36, sayılar diye dört dosya içeren aynı klasör için sayı? yazılırsa sayı1 ve sayı2 dosyaları belirtilmiş olur.
+   Soru işareti jokerinin yıldızdan en büyük farkı yıldız jokeri kullanıldığı zaman sıfır veya daha fazla karakterin yerine geçebilirken soru işareti jokeri sadece tek bir karakterin yerini tutar.
+
+Örnek: ls komutunu kullanarak say ile başlayan tüm dosyaları listeleme
+![Soru işareti jokerinin kullanımı](image/sorujoker.PNG)
+       ls komutunu kullanarak sayi ile başlayan ve yanında 2 karakter bulunan dosyaları listeleme
+![Soru işareti jokerinin kullanımı](image/sorujoker2.PNG)
 
 > Daha detaylı jokerler ve örnekleri için [Just Enough Linux](https://leanpub.com/jelinux/read#wildcards) adlı kitabın Wildcards kısmına bakılmalıdır.
+> Joker kullanımı yerine aranacak kelimenin sonunda klavyedeki "Tab" karakteri kullanılırsa yazdığımızı devamlı tamamlama işlevinde bulunacağı için bu tuşu kullanmak da aradığımız dosya veya klasörü bulabilmek açısından faydalı olacaktır.
 
 %%%% TODO Authors note: I think we need a short and sweet example here about wildcards
 
