@@ -98,6 +98,10 @@ No space left on device
 
  : Hard diskte yer kalmamıştır.
 
+Aşağıdaki örnekte, `genomes` klasöründeki bir dosya `birds` klasörüne taşınmaya çalışılırken klasör adı yanlış girildiğinde (genomes yerine gnomes) hata oluşmuştur. İkinci hata, `birds` klasörünün hiyerarşisi doğru verilmediğinden (birds yerine genomes/birds) hata oluşmuştur. Bu tür hataları önlemek için Tab tuşu kullanımını alışkanlık haline getirmek gerekmektedir. Eğer Tab tuşu dosya veya klasör adını tamamlamıyorsa, ya dosya/klasör adı yanlış yazılmış veya yanlış klasörde olduğumuzdan dolayı dosya/klasör bulunamıyor demektir.
+
+![Şekil 1.2b Terminalde klasör veya dosya adı hatası](images/typo-commandline.png)
+
 > Bazı komutlar için kullanılan karakterler önce terminal tarafından yorumlanıp sonra komut tarafından yorumlanır. Terminalde anlamı olan karakterlerin sadece komut tarafından yorumlanması isteniyorsa tırnak işareti (' ') içinde kullanılmalıdır. Tek tırnak (' ') işareti ile çalışabilen komutlar olduğu gibi, bazı komutlar ise çift tırnak ("") ile çalışabilir. Komutun kullanımının doğruluğundan emin olunduğu zaman hatanın bunlardan kaynaklanabileceği düşünülmelidir. 
 
 ### Sayı aralıkları {#sayi-araliklari}
@@ -131,23 +135,28 @@ Jokerler aynı isimde birçok dosya veya döküman arasından istediğimizi bulm
 
 Yıldız (\*)
  : Geçerli klasördeki tüm dosyaları veya başına belli bir kelime yazılarak o kelime ile başlayan tüm dosyaları ifade eder. Örneğin klasörde sayı1, sayı2, sayı36, sayılar diye dört dosya varsa bunlar teker teker yazmak yerine sayı\* şeklinde de ifade edilebilir. \*sayı\* ifadesi ise içinde "sayı" kelimesi içeren dosya veya klasör isimleriyle eşlecektir.
- 
-Örnek:ls komutu kullanarak içinde say geçen tüm dosyaların görüntülenmesi
-![Yıldız jokerinin kullanımı](images/yıldızjoker2.PNG)
 
 Soru İşareti (?)
  : Geçerli klasördeki sadece sondaki tek bir karakteri farklı olan dosyaların tümünü ifade eder. Örneğin yine sayı1, sayı2, sayı36, sayılar diye dört dosya içeren aynı klasör için sayı? yazılırsa sayı1 ve sayı2 dosyaları belirtilmiş olur.
  
- Örnek:ls komutu kullanılarak say ile başlayan tüm dosyaların görüntülenmesi
- ![Soru işareti jokerinin kullanımı](images/sorujoker.PNG)
-       ls komutu kullanılarak sayi ile başlayan ve adının yanında 2 karakter bulunduran dosyaların görüntülenmesi
- ![Soru işareti jokerinin kullanımı](images/sorujoker2.PNG)
+Soru işareti jokeri ile yıldız jokeri arasındaki en büyük fark yıldız jokeri sıfır veya daha fazla karakteri temsil edebilirken soru işareti jokerinin sadece tek karakteri temsil edebilmesidir. Aşağıdaki örnekte sırasıyla, `sayi` ile başlayan, `say` içeren, `say` yanında tek karakter veya iki karakter içeren dosya isimleri joker yardımıyla listelenmiştir.
 
-  Soru işareti jokeri ile yıldız jokeri arasındaki en büyük fark yıldız jokeri sıfır veya daha fazla karakteri temsil edebilirken soru işareti jokerinin sadece sayısı kadar karakteri temsil edebilmesidir.
->Jokerlere ek olarak aradığımız dosya ismi sonrasında klavyedeki "Tab" tuşuna basarak aradığımız isimle başlayan tüm dosyaları görebiliriz. "Tab" tuşunun çıktısı kodu veya ismi tamamlama yönünde olacaktır. 
+<<[Şekil 1.4b Jokerlerin kullanımı](code/joker-ornek.txt)
+
+%%%% TODO either delete or move this sentence "Jokerlere ek olarak aradığımız dosya ismi sonrasında klavyedeki "Tab" tuşuna basarak aradığımız isimle başlayan tüm dosyaları görebiliriz. "Tab" tuşunun çıktısı kodu veya ismi tamamlama yönünde olacaktır."
+
 > Daha detaylı jokerler ve örnekleri için [Just Enough Linux](https://leanpub.com/jelinux/read#wildcards) adlı kitabın Wildcards kısmına bakılmalıdır.
 
-%%%% TODO Authors note: I think we need a short and sweet example here about wildcards
+%%%% TODO instead of giving link to just enough linux, can we put a concise table about jokers in bash?
+%%%% TODO the examples above is using ls only. we can make a jokers folder in bundle and put many files in it so that students can use it as a playground
+
+### Tab tuşu kullanımı
+
+Windows ortamında klasöre girmek veya dosyaları açmak, taşımak için üzerlerine tıklamak yeterli olmaktadır. Ama Linux terminalinde her komutu yazarak çalıştırmak zorundayız. Örneğin, kopyalamak istediğimiz bir dosyanın adını, hedef klasörünü adını komut satırına yazmamız gerekmektedir. Böyle bir durumda uzun dosya veya klasör isimlerini yazmak hem zahmetli hem de vakit kaybettirecektir. Bu zorluğu `Tab` tuşu yardımıyla aşmak mümkündür. Dosya veya klasör isminden birkaç karakter yazıldıktan sonra `Tab` tuşuna basıldığında isim tamamlanacaktır. 
+
+`Tab` tuşunu kullanmak sadece yazma hızını arttırmakla kalmayıp hatalı komut yazmamıza da engel olacaktır. Eğer `Tab` tuşuyla dosya veya klasör ismi tamamlanmıyorsa ya dosya veya klasör mevcut değildir veya ismi yanlış yazılmıştır.
+
+%%%% TODO give a good example of tab usage, single tab, double tab. etc
 
 ### Locale
 
@@ -212,6 +221,20 @@ Boşluk karakterinin argümanları ayırmak için kullanılmadığı, dosya ismi
 
 Bu işleme kaçış (ing. escape) denilmektedir.
 
+> İçinde boşluk karakteri bulunan dosya ve klasör isimlerini yazarken `Tab` tuşu ile tamamlama yapılırsa kaçış karakteri otomatik olarak eklenecektir.
+
+### Kontrol Karakterleri
+
+Terminalde `Ctrl` (Kontrol) tuşu ile özel karakterler terminale yazdırılabilir. Bu özel karakterler belirli eylemleri gerçekleştirmek için kullanılmaktadır. Aşağıdaki tuş kombinasyonları ile terminalde komut yazarken zaman kazanılabilir, özel eylemler (örn. komut öldürme) gerçekleştirilebilir. 
+
+* Ctrl-c	Çalışan komutu sona erdirir
+* Ctrl-u	Kürsorun solundaki karakterleri siler
+* Ctrl-k	Kürsorun sağındaki karakterleri siler
+* Ctrl-d	End-of-file veya çıkış sinyali üretir
+* Ctrl-w	Komut satırındaki son kelimeyi siler
+* Ctrl-a	Kürsoru satır başına taşır
+* Ctrl-e	Kürsoru satır sonuna taşır
+
 ### Dosya türleri ve uzantıları {#dosya-turleri}
 
 Maalesef, Windows işletim sisteminin kullanıcıların işini kolaylaştırmak için seçtiği yöntemler yüzünden dosya türü konusunda bazı yanlış anlamalar olmaktadır. Windows sisteminde bir dosya üzerine çift tıklandığında uygun yazılım ile o dosya açılmaktadır. Mesela, .doc veya docx uzantılı bir dosya Microsoft Word ile açılmaktadır. Bu yüzden "korelasyon" ile "sebep-sonuç ilişkisi" [karıştırılmaktadır](https://en.wikipedia.org/wiki/Correlation_does_not_imply_causation). Bir dosya, *uzantısı .doc veya .docx olduğu için Word ile açılıyor* şeklinde bir kabul ortaya çıkmaktadır. Bir dosya ancak uygun [Word binary format](https://en.wikipedia.org/wiki/Microsoft_Word#Binary_formats_.28Word_97.E2.80.932007.29) taşıyorsa Word tarafından açılabilir, uzantısı ne olursa olsun. 
@@ -225,21 +248,39 @@ Yukarıda anlatılanlar, terminalde çalışırken uzantılar rastgele seçilebi
 Bilişim veya programlama türündeki bilgilerin en hızlı öğrenilmesi pratik yapma ve egzersiz ile mümkün olacaktır. Bu kitabı çok kısa sürede okuyup anlayabilirsiniz fakat bir terminal karşısına geçip pratik yapmazsanız maalesef bu kitapta anlatılanları kavramanız mümkün olmayacaktır. Aşağıda, terminal komutları hakkında pratik yapabilmeniz için kullanılabilecek web tabanlı kaynaklar listelenmiştir.
 
 * [Terminus](http://web.mit.edu/mprat/Public/web/Terminus/Web/main.html) : Bu terminal oyunu yeni başlayanlara klasör ve dosyalarda gezinme kavramlarını öğretmek amacıyla yazılmıştır. Yeni başlayanlar için, terminale alışmak için oldukça yararlı olacaktır. 
-* [Tutorials Point - Unix Terminal Online](http://www.tutorialspoint.com/unix_terminal_online.php) : Bu websayfasında, online olarak tam fonksiyonlu bir terminal kullanabilirsiniz. Herhangi bir program kurmadan veya sabit bir makinede kullanıcı oluşturmadan bu websayfasında Linux terminalini kullanabilirsiniz. Sol taraftaki gizli panel sayesinde klasör ile etkileşebilirsiniz, çalışma klasörünüze dosya yükleyebilir veya bu klasörden dosya indirebilirsiniz. Dilerseniz bu kitapta kullanılan dosyaları çalıştığınız klasöre indirerek hiç zaman kaybetmeden kitaptaki komutları çalışmaya başlayabilirsiniz. Bunun için aşağıdaki komutları çalıştırmanız gerekmektedir:
+* [Tutorials Point - Unix Terminal Online](http://www.tutorialspoint.com/unix_terminal_online.php) : Bu websayfasında, online olarak tam fonksiyonlu bir terminal kullanabilirsiniz. Herhangi bir program kurmadan veya sabit bir makinede kullanıcı oluşturmadan bu websayfasında Linux terminalini kullanabilirsiniz. Sol taraftaki gizli panel sayesinde klasör ile etkileşebilirsiniz, çalışma klasörünüze dosya yükleyebilir veya bu klasörden dosya indirebilirsiniz. Dilerseniz bu kitapta kullanılan dosyaları çalıştığınız klasöre indirerek hiç zaman kaybetmeden kitaptaki komutları çalışmaya başlayabilirsiniz. Bunun için aşağıdaki komutları çalıştırmanız gerekmektedir. (Bu websayfası maalesef kısa aralıklarla kullanıma müsaade etmektedir, daha uygun bir alternatif için liste sonundaki açıklamayı okuyunuz)
 
         curl -L  https://goo.gl/i4wD9H > veri-analizi-bundle.tar.gz
         tar xzf veri-analizi-bundle.tar.gz
-        source .bashrc 	# terminali ve komut satırını renklendirmek için
+        source bashrc-tp	# terminali ve komut satırını renklendirmek için
 
 * [ExplainShell](http://explainshell.com/) : Bu websayfasında karmaşık ve uzun komutlar görsel olarak açıklanmaktadır. 
 * [OverTheWire Wargames](http://overthewire.org/wargames) : Bu site network güvenliği üzerine egzersizler yapılmak üzere kurulmuş olup *[Bandit](http://overthewire.org/wargames/bandit/)* başlıklı kısım terminale giriş için egzersizler içermektedir.
 * [ShortcutFoo](https://www.shortcutfoo.com/) : Bu sitede hesap açtıktan sonra [Command Line](https://www.shortcutfoo.com/app/dojos/command-line) ve [Awk](https://www.shortcutfoo.com/app/dojos/awk) kısımlarında pratik yapılabilir ve diğer kullanıcılarla yarışma şeklinde öğrenme gerçekleşebilir.
 * [Linux Survival](http://linuxsurvival.com/linux-tutorial-introduction/) : Oldukça interaktif olarak Linux'a dair temel konular işlenmiştir. Bazı komutların etkileri görsel bir şekilde anlatılmaya çalışılmıştır.
+* [The Linux Command Line](http://linuxcommand.org/lc3_learning_the_shell.php) : Terminalin kullanımına dair temel bilgileri ve dosya klasör yapısı konularını örneklerle anlatan bir websitesi.
 * [LearnShell.org](http://www.learnshell.org/) : İnteraktif şekilde Bash programlama anlatılmaktadır. Bu kitabın içeriğinin biraz dışındadır fakat interaktif olmasından dolayı yararlanılabilir bir kaynaktır. Bölüm sonlarındaki Quizler kendinizi değerlendirmek için kullanılabilir.
 * [Unix Tutorial For Beginners](http://www.ee.surrey.ac.uk/Teaching/Unix/) : Başlangıç seviyesinde bilgiler veren bir site. Bu kitabın içeriği ile uyumlu kısım bu websayfasındaki ilk dört kısımdır (tutorial), diğer kısımlar bu kitapta işlenen konuların dışında kalmaktadır.
 * [Ryans Tutorials - Linux](http://ryanstutorials.net/linuxtutorial/) : Bu websayfasında bu kitabın içeriğini anlamak için gerekli bilgiler mevcut olup bölüm sonlarındaki aktiviteler konuları kavramak için yararlı olacaktır. (Not: *6. Vi Text Editor* adlı kısmı gözardı ediniz)
 
-Bunlara ek olarak Linux u kullanabileceğimiz 3 tane daha farklı seçenek sunabiliriz:
-1) Putty yoluyla Linux a ulaşmak
-2) Kendi bilgisayarınızda "virtualbox" içine linux u kurmak (internet olmayan durumlarda bile linux u kullanmamıza yarar!)
-3) Akıllı telefonunuza Android üzerinden "juiceSSH" veya "Termux" adlı aplikasyonları indirmek (Telefonunuzun klavyesi yeterli gelmeyeceğinden bluetooth klavye ile kullanımı daha uygundur) 
+> [Tutorials Point](http://www.tutorialspoint.com/unix_terminal_online.php) websayfası kısa süreli kullanım için müsaade ettiğinden dolayı başka bir websayfasındaki online terminali kullanabilirsiniz. CodeAcademy adlı online eğitim veren sitede "Learn the Command Line" adlı ders için sağlanan terminali, bu kitaptaki örnekleri yapmak ve takip etmek için kullanabilirsiniz.([screencast link](https://s3-us-west-2.amazonaws.com/veri-analizi/01codeacademy.gif))
+
+![Code Academy websayfasındaki terminalin kullanımı](images/01codeacademy.gif)
+
+### Terminale erişim
+
+{icon=apple}
+> MAC kullanıcıları için aşağıdaki programları kurmaya veya kullanmaya gerek yoktur. Bilgisayarınızda zaten Terminal programı yüklü olup, Applications altında Terminal programını bulup çalıştırarak terminal kullanmaya başlayabilirsiniz. 
+>
+> Eğer bu ders için açılan hesabınıza erişmek isterseniz `ssh KULLANICIADI@IPNO` komutunu çalıştırmanız, ardından şifrenizi girmeniz yeterlidir. KULLANICIADI öğrenci numaranız olup, IPNO ise dönem başında belirtilmiş olan IP numarasıdır.
+
+Dersimizde, Windows bilgisayarlarda [Putty](http://www.putty.org/) adlı program yardımıyla Linux kurulu bir makineye bağlantı kurup ders için açılan hesabınıza erişim sağlayacaksınız. Çalıştırdığınız komutların listesi, oluşturduğunuz dosyalar gibi bilgiler hesabınızda kalıcı olarak tutulmaktadır. Bu erişim metoduna ek olarak aşağıdaki yöntemler ile de terminalde egzersiz yapmanız mümkün olacaktır.
+
+1. [Tutorials Point](http://www.tutorialspoint.com/unix_terminal_online.php) sayfasında ders kitabında kullanılan örnek dosyalar ile çalışabilirsiniz. Fakat, çalıştırdığınız komutlar listesi ve oluşturduğunuz dosyalar oturum kapandıktan sonra kaybolacaktır.
+
+2. [Virtualbox](https://www.virtualbox.org/) adlı programı [bilgisayarınıza kurarak](https://www.youtube.com/watch?v=GyJH86uXZw8), programın içinde çalışacak şekilde herhangi bir Linux sürümünü kurabilirziniz (Ubuntu kurulumunu anlatan video [link](https://www.youtube.com/watch?v=5q0zuo2ED1s)). Bu şekilde, internet bağlantısı olmadan, kişisel bilgisayarınızda Linux çalıştırıp kullanabilirsiniz.
+
+3. Android telefon veya tabletlerinizde de terminal egzersizi yapabilir veya ders hesabınıza erişebilirsiniz. Aşağıdaki uygulamalar ile terminalde çalışmak isterseniz bluetooth klavye kullanmanız gerekebilir. Telefon veya tabletteki sanal klavye ile terminalde komut girişi pratik olmayacaktır.
+
+    * [juiceSSH](https://play.google.com/store/apps/details?id=com.sonelli.juicessh) adlı uygulama ile ders hesabınıza erişim  sağlayabilirsiniz
+    * [termux](https://play.google.com/store/apps/details?id=com.termux) adlı uygulama, telefonunuz veya tabletinizde çalışan terminal olarak kullanılabilir ([video link](https://www.youtube.com/watch?v=h_aWUpF9_Yo)).
